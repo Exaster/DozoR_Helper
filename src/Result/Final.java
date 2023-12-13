@@ -354,6 +354,82 @@ public class Final extends JFrame {
 					e1.printStackTrace();
                 }
                 }
+            if (parts.length == 4) { // Check for 6 input values (hours and minutes)
+                try {
+                	moveFromTo(MenuStartPosition, MenuEndPosition);
+                    
+                    //Delay();
+                    //mix(item,item);
+                    int xHours = Integer.parseInt(parts[0]);
+                    int xMinutes = Integer.parseInt(parts[1]);
+                    int xSeconds = 0;
+
+                    int yHours = Integer.parseInt(parts[2]);
+                    int yMinutes = Integer.parseInt(parts[3]);
+                    int ySeconds = 0;
+
+                    // Calculate the differences
+                    int zHours = yHours - xHours;
+                    int zMinutes = yMinutes - xMinutes;
+                    int zSeconds = ySeconds - xSeconds;
+
+                    // Check for negative values in minutes and seconds and adjust if needed
+                    if (zMinutes < 0) {
+                        zHours -= 1;
+                        zMinutes += 60;
+                    }
+                    if (zSeconds < 0) {
+                        zMinutes -= 1;
+                        zSeconds += 60;
+                    }
+
+                    // Check if the indices are within the bounds of the arrays
+                    if (zHours >= 0 && zHours < time1.length && zMinutes >= 0 && zMinutes < time1[0].length && zSeconds >= 0 && zSeconds < time1[0][0].length) {
+                        time1[zHours][zMinutes][zSeconds] = 1;
+                        time2[zHours][zMinutes][zSeconds] = 2;
+                        time3[zHours][zMinutes][zSeconds] = 3;
+
+                        // Calculate indices for the additional functionality
+                        int x1 = xHours;
+                        int y1 = xMinutes;
+                        int z1 = xSeconds;
+
+                        int x2 = yHours;
+                        int y2 = yMinutes;
+                        int z2 = ySeconds;
+
+                        int x3 = zHours;
+                        int y3 = zMinutes;
+                        int z3 = zSeconds;
+
+                        
+                        if (x1 < time1.length && y1 < time1[0].length && z1 < time1[0][0].length &&
+                                x2 < time2.length && y2 < time2[0].length && z2 < time2[0][0].length &&
+                                x3 < time3.length && y3 < time3[0].length && z3 < time3[0][0].length) {
+                            
+                            time1[x1][y1][z1] = 1;
+                            time2[x2][y2][z2] = 2;
+                            time3[x1][y1][z1] = 3;
+                            
+                            roll(-x1, 140, 160);
+                            roll(-y1, 180, 160);
+                            roll(-z1, 220, 160);
+                            roll(-x2, 140, 190);
+                            roll(-y2, 180, 190);
+                            roll(-z2, 220, 190);
+                            roll(-x3, 140, 230);
+                            roll(-y3, 180, 230);
+                            roll(-z3, 220, 230);
+                            System.out.println("Data changed: time1[" + x1 + "][" + y1 + "][" + z1 + "] and time2[" + x2 + "][" + y2 + "][" + z2 + "]" + " and time3[" + x3 + "][" + y3 + "][" + z3 + "]");
+                        }
+                    }
+                }catch (AWTException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+            }
+        
+        
             if (parts.length == 9) { // Check for 6 input values (hours and minutes)
                 try {
                 	moveFromTo(MenuStartPosition, MenuEndPosition);
@@ -428,10 +504,7 @@ public class Final extends JFrame {
 					e1.printStackTrace();
 				}
             }
-        }
-        
-        
-        
+        }  
     }
 
 
@@ -695,4 +768,3 @@ public class Final extends JFrame {
         });
     }
 }
-// не знаю для чого, але вся робота через файли, переробив програму колишню для гри, зараз надішлю

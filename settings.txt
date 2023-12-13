@@ -14,4 +14,4 @@
 150,80 // Default data for Event choose button
 160,60 // Default data for Event delete button
 627,303 // Default data for Shedule start position
-138,122 // Default data for Shedule end position
+158,118 // Default data for Shedule end position
