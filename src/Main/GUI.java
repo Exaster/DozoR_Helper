@@ -6,8 +6,11 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -79,13 +82,19 @@ public class GUI {
 	    } catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (UnsupportedFlavorException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
-	private static void copyToClipboard(String text) {
+	public static void copyToClipboard(String text) throws UnsupportedFlavorException, IOException {
 	    StringSelection selection = new StringSelection(text);
-	    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
+		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+		clipboard.setContents(selection, selection);
 	}
+
+
 
 	private static boolean isValidLine(String line) {
 	    // Check if the line contains only numbers, commas, dots, or empty spaces
