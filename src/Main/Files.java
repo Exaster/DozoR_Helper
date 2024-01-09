@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.StandardWatchEventKinds;
 import java.nio.file.WatchEvent;
@@ -126,7 +127,9 @@ public class Files {
 	        }
 
 	        // Open the file for reading
-	        Program.fileReader = new BufferedReader(new FileReader(inputFile));
+	        //Program.fileReader = new BufferedReader(new FileReader(inputFile));
+	        Program.fileReader = new BufferedReader(new FileReader(inputFile, StandardCharsets.UTF_8));
+
 	    }
 	 public static void createInputFile() throws IOException {
 	        // Create the "input.txt" file with some initial content

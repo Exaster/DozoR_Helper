@@ -194,6 +194,7 @@ public class Program extends JFrame {
    
 
     public static void main(String[] args) {
+    	System.setProperty("file.encoding", "UTF-8");
         SwingUtilities.invokeLater(() -> {
             Program app = new Program(100);
             app.setVisible(true);

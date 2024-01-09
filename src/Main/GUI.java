@@ -59,6 +59,7 @@ public class GUI {
 	public static void updateTextField()  {
 	    try {
 	        String line;
+	        
 	        if ((line = Program.fileReader.readLine()) != null) {
 	            if (isValidLine(line)) {
 	            	Program.textField.setText(line);
@@ -88,12 +89,11 @@ public class GUI {
 		}
 	}
 
-	public static void copyToClipboard(String text) throws UnsupportedFlavorException, IOException {
+	private static void copyToClipboard(String text) throws UnsupportedFlavorException {
 	    StringSelection selection = new StringSelection(text);
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		clipboard.setContents(selection, selection);
 	}
-
 
 
 	private static boolean isValidLine(String line) {
