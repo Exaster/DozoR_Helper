@@ -1,7 +1,7 @@
-535,170 // Default data for AddPosition
+306,184 // changed `??????`
 506,155 // Default data for Menu start position
 145,70 // Default data for Menu end position
-100,0 // Default data for elay
+1000,0 // Default data for delay
 270,295 // Default data for checkbox 1
 270,315 // Default data for checkbox 2
 270,335 // Default data for checkbox 3

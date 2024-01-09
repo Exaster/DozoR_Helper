@@ -4,6 +4,6 @@
 /**
  * 
  */
-module HelperRozklad {
+module DozoRHelper {
 	requires java.desktop;
 }
