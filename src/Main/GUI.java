@@ -5,6 +5,8 @@ import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import java.awt.Rectangle;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
 import java.io.IOException;
 
 import javax.swing.JButton;
@@ -51,37 +53,42 @@ public class GUI {
 		return constraints;
 	}
 	
-	 public static void updateTextField() {
-	        try {
-	            // Read the next line from the file and update the text field
-	            String line;
-	            if ((line = Program.fileReader.readLine()) != null) {
+	public static void updateTextField()  {
+	    try {
+	        String line;
+	        if ((line = Program.fileReader.readLine()) != null) {
+	            if (isValidLine(line)) {
 	            	Program.textField.setText(line);
 	                Program.addButton.doClick();
-	                try {
-	                    Thread.sleep(1500); // Sleep for 3 seconds (3000 milliseconds)
-	                } catch (InterruptedException e) {
-	                    e.printStackTrace(); // Handle the InterruptedException if necessary
-	                }
+	                Thread.sleep(1500);
 	                Program.applyButton.doClick();
-
 	                Utils.clickOnScreen(405, 470);
-	                Utils.delay();
-	                try {
-	                    Thread.sleep(1500); // Sleep for 3 seconds (3000 milliseconds)
-	                } catch (InterruptedException e) {
-	                    e.printStackTrace(); // Handle the InterruptedException if necessary
-	                }
+	                Thread.sleep(1500);
 	                System.out.println("Line is " + line);
 	            } else {
-	                // Stop the timer when there are no more lines to read
-	            	Program.timer.stop();
-	                // Close the file reader
-	            	Program.fileReader.close();
+	                // Skip the invalid line, copy it to the buffer, or handle as needed
+	                System.out.println("Skipping invalid line: " + line);
+	                copyToClipboard(line);
 	            }
-	        } catch (IOException e) {
-	            e.printStackTrace();
+	        } else {
+	            Program.timer.stop();
+	            Program.fileReader.close();
 	        }
-	    }
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    } catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
+	private static void copyToClipboard(String text) {
+	    StringSelection selection = new StringSelection(text);
+	    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
+	}
+
+	private static boolean isValidLine(String line) {
+	    // Check if the line contains only numbers, commas, dots, or empty spaces
+	    return line.matches("[0-9,\\s.]+");
+	}
 }
