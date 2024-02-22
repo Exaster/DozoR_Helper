@@ -41,6 +41,10 @@ public class Program extends JFrame {
 
 	static JButton applyButton;
 	static JButton addButton;
+	static JButton clearButton;
+	static JButton railsButton;
+	static JButton setButton;
+	static JButton autoButton;
 	public JCheckBox secondOptionCheckbox;
 	public static Timer timer; // Timer for scheduling updates
 	public static BufferedReader fileReader;
@@ -85,16 +89,14 @@ public class Program extends JFrame {
 
 		applyButton = GUI.createStyledButton("Час");
 		addButton = GUI.createStyledButton("Додати");
-
-		JButton clearButton = GUI.createStyledButton("Очистити");
-		JButton railsButton = GUI.createStyledButton("Рейси");
-		JButton setButton = GUI.createStyledButton("Встановити");
-		JButton autoButton = GUI.createStyledButton("Синхронізувати");
+		clearButton = GUI.createStyledButton("Очистити");
+		railsButton = GUI.createStyledButton("Рейси");
+		setButton = GUI.createStyledButton("Встановити");
+		autoButton = GUI.createStyledButton("Синхронізувати");
 
 		GridBagConstraints textFieldConstraints = GUI.createButtonConstraints(0, 0);
 		textFieldConstraints.gridwidth = 3;
 		textFieldConstraints.weightx = 1.0;
-
 		GridBagConstraints applyButtonConstraints = GUI.createButtonConstraints(0, 1);
 		GridBagConstraints addButtonConstraints = GUI.createButtonConstraints(1, 1);
 		GridBagConstraints clearButtonConstraints = GUI.createButtonConstraints(0, 2);
