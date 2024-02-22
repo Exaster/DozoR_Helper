@@ -10,8 +10,6 @@ import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
@@ -26,24 +24,25 @@ public class GUI {
 		button.setBackground(new Color(50, 50, 50));
 		return button;
 	}
-	public static JCheckBox createStyledCheckbox(String label) {
-        JCheckBox checkbox = new JCheckBox(label);
-        checkbox.setForeground(Color.CYAN);
-        checkbox.setBackground(Color.DARK_GRAY);
-        checkbox.setBorderPaintedFlat(true);
-        checkbox.setFocusPainted(false);
-      
-        checkbox.setUI(new BasicCheckBoxUI() {
-            @Override
-            protected void paintIcon(Graphics g, JComponent c, Rectangle iconRect) {
-                // Customize the appearance of the checkbox square
-                g.setColor(Color.CYAN); // Set the color you want for the square
-                g.fillRect(iconRect.x, iconRect.y, iconRect.width, iconRect.height);
-            }
-        });
 
-        return checkbox;
-    }
+	public static JCheckBox createStyledCheckbox(String label) {
+		JCheckBox checkbox = new JCheckBox(label);
+		checkbox.setForeground(Color.CYAN);
+		checkbox.setBackground(Color.DARK_GRAY);
+		checkbox.setBorderPaintedFlat(true);
+		checkbox.setFocusPainted(false);
+
+		checkbox.setUI(new BasicCheckBoxUI() {
+			@Override
+			protected void paintIcon(Graphics g, JComponent c, Rectangle iconRect) {
+				// Customize the appearance of the checkbox square
+				g.setColor(Color.CYAN); // Set the color you want for the square
+				g.fillRect(iconRect.x, iconRect.y, iconRect.width, iconRect.height);
+			}
+		});
+
+		return checkbox;
+	}
 
 	public static GridBagConstraints createButtonConstraints(int gridx, int gridy) {
 		GridBagConstraints constraints = new GridBagConstraints();
@@ -55,32 +54,32 @@ public class GUI {
 		constraints.insets = new Insets(3, 3, 3, 3); // Default insets
 		return constraints;
 	}
-	
-	public static void updateTextField()  {
-	    try {
-	        String line;
-	        
-	        if ((line = Program.fileReader.readLine()) != null) {
-	            if (isValidLine(line)) {
-	            	Program.textField.setText(line);
-	                Program.addButton.doClick();
-	                Thread.sleep(1500);
-	                Program.applyButton.doClick();
-	                Utils.clickOnScreen(405, 470);
-	                Thread.sleep(1500);
-	                System.out.println("Line is " + line);
-	            } else {
-	                // Skip the invalid line, copy it to the buffer, or handle as needed
-	                System.out.println("Skipping invalid line: " + line);
-	                copyToClipboard(line);
-	            }
-	        } else {
-	            Program.timer.stop();
-	            Program.fileReader.close();
-	        }
-	    } catch (IOException e) {
-	        e.printStackTrace();
-	    } catch (InterruptedException e) {
+
+	public static void updateTextField() {
+		try {
+			String line;
+
+			if ((line = Program.fileReader.readLine()) != null) {
+				if (isValidLine(line)) {
+					Program.textField.setText(line);
+					Program.addButton.doClick();
+					Thread.sleep(1500);
+					Program.applyButton.doClick();
+					Utils.clickOnScreen(410, 390);
+					Thread.sleep(1500);
+					System.out.println("Line is " + line);
+				} else {
+					// Skip the invalid line, copy it to the buffer, or handle as needed
+					System.out.println("Skipping invalid line: " + line);
+					copyToClipboard(line);
+				}
+			} else {
+				Program.timer.stop();
+				Program.fileReader.close();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (UnsupportedFlavorException e) {
@@ -90,14 +89,13 @@ public class GUI {
 	}
 
 	private static void copyToClipboard(String text) throws UnsupportedFlavorException {
-	    StringSelection selection = new StringSelection(text);
+		StringSelection selection = new StringSelection(text);
 		Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 		clipboard.setContents(selection, selection);
 	}
 
-
 	private static boolean isValidLine(String line) {
-	    // Check if the line contains only numbers, commas, dots, or empty spaces
-	    return line.matches("[0-9,\\s.]+");
+		// Check if the line contains only numbers, commas, dots, or empty spaces
+		return line.matches("[0-9,\\s.]+");
 	}
 }

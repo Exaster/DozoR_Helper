@@ -92,13 +92,13 @@ public class Files {
 			FileWriter writer = new FileWriter(Program.CONFIG_FILE);
 			String[] defaultData = { 
 					"410,180 // Default data for AddPosition",
-					"506,155 // Default data for Menu start position", 
+					"500,190 // Default data for Menu start position", 
 					"145,70 // Default data for Menu end position",
-					"100,0 // Default data for delay", 
-					"270,295 // Default data for checkbox 1",
-					"270,315 // Default data for checkbox 2", 
-					"270,335 // Default data for checkbox 3",
-					"270,350 // Default data for checkbox 4", 
+					"100,100 // Default data for delay", 
+					"270,220 // Default data for checkbox 1",
+					"270,240 // Default data for checkbox 2", 
+					"270,260 // Default data for checkbox 3",
+					"270,280 // Default data for checkbox 4", 
 					"215,110 // Default data for option menu",
 					"215,135 // Default data for option select", 
 					"215,135 // Default data for option field",
@@ -106,7 +106,7 @@ public class Files {
 					"650,20 // Default data for Event button",
 					"150,80 // Default data for Event choose button", 
 					"160,60 // Default data for Event delete button",
-					"627,303 // Default data for Shedule start position",
+					"565,320 // Default data for Shedule start position",
 					"158,118 // Default data for Shedule end position", };
 			for (String line : defaultData) {
 				writer.write(line + "\n");
@@ -118,26 +118,27 @@ public class Files {
 			e.printStackTrace();
 		}
 	}
-	 public static void processInputFile() throws IOException {
-	        File inputFile = new File("input.txt");
 
-	        // Check if the file exists, and create it if not
-	        if (!inputFile.exists()) {
-	            createInputFile();
-	        }
+	public static void processInputFile() throws IOException {
+		File inputFile = new File("input.txt");
 
-	        // Open the file for reading
-	        //Program.fileReader = new BufferedReader(new FileReader(inputFile));
-	        Program.fileReader = new BufferedReader(new FileReader(inputFile, StandardCharsets.UTF_8));
+		// Check if the file exists, and create it if not
+		if (!inputFile.exists()) {
+			createInputFile();
+		}
 
-	    }
-	 public static void createInputFile() throws IOException {
-	        // Create the "input.txt" file with some initial content
-	        try (BufferedWriter bw = new BufferedWriter(new FileWriter("input.txt"))) {
-	            bw.write(" ");
-	            // Add more lines as needed
-	        }
-	    }
+		// Open the file for reading
+		// Program.fileReader = new BufferedReader(new FileReader(inputFile));
+		Program.fileReader = new BufferedReader(new FileReader(inputFile, StandardCharsets.UTF_8));
 
+	}
+
+	public static void createInputFile() throws IOException {
+		// Create the "input.txt" file with some initial content
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("input.txt"))) {
+			bw.write(" ");
+			// Add more lines as needed
+		}
+	}
 
 }
