@@ -35,8 +35,7 @@ public class GUI {
 		checkbox.setUI(new BasicCheckBoxUI() {
 			@Override
 			protected void paintIcon(Graphics g, JComponent c, Rectangle iconRect) {
-				// Customize the appearance of the checkbox square
-				g.setColor(Color.CYAN); // Set the color you want for the square
+				g.setColor(Color.CYAN); 
 				g.fillRect(iconRect.x, iconRect.y, iconRect.width, iconRect.height);
 			}
 		});
@@ -51,7 +50,7 @@ public class GUI {
 		constraints.gridwidth = 1;
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		constraints.weightx = 0.5;
-		constraints.insets = new Insets(3, 3, 3, 3); // Default insets
+		constraints.insets = new Insets(3, 3, 3, 3);
 		return constraints;
 	}
 
@@ -69,7 +68,6 @@ public class GUI {
 					Thread.sleep(1500);
 					System.out.println("Line is " + line);
 				} else {
-					// Skip the invalid line, copy it to the buffer, or handle as needed
 					System.out.println("Skipping invalid line: " + line);
 					copyToClipboard(line);
 				}
@@ -95,7 +93,6 @@ public class GUI {
 	}
 
 	private static boolean isValidLine(String line) {
-		// Check if the line contains only numbers, commas, dots, or empty spaces
 		return line.matches("[0-9,\\s.]+");
 	}
 }
