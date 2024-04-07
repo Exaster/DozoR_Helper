@@ -120,7 +120,7 @@ public class Files {
 	}
 
 	public static void processInputFile() throws IOException {
-		File inputFile = new File("input.txt");
+		File inputFile = new File("input.yml");
 
 		// Check if the file exists, and create it if not
 		if (!inputFile.exists()) {
@@ -134,8 +134,8 @@ public class Files {
 	}
 
 	public static void createInputFile() throws IOException {
-		// Create the "input.txt" file with some initial content
-		try (BufferedWriter bw = new BufferedWriter(new FileWriter("input.txt"))) {
+		// Create the "input.yml" file with some initial content
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("input.yml"))) {
 			bw.write(" ");
 			// Add more lines as needed
 		}

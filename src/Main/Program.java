@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class Program extends JFrame {
 	public static final long serialVersionUID = 1L;
-	public static final String CONFIG_FILE = "settings.txt";
+	public static final String CONFIG_FILE = "settings.yml";
 
 	public static final int array_size = 1;
 	public static int[][] add_pos;

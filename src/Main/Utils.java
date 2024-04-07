@@ -274,7 +274,7 @@ public class Utils {
 
 	public static void updateConfig(int lineNumber, String newText) {
 		try {
-			File configFile = new File("settings.txt");
+			File configFile = new File("settings.yml");
 			ArrayList<String> lines = new ArrayList<>();
 
 			try (BufferedReader reader = new BufferedReader(new FileReader(configFile))) {
